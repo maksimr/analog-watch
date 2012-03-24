@@ -8,33 +8,7 @@
 			width: 400,
 			height: 400,
 			postCreate: function () {
-        var w = this.width, h = this.height;
-        this.svg.create('text',{
-          x: w/2 - 5,
-          y: h - 25,
-          fill: "red"
-        }).appendChild(doc.createTextNode(6));
-
-        this.svg.create('text',{
-          x: w/2 - 5,
-          y: 35,
-          fill: "red"
-        }).appendChild(doc.createTextNode(0));
-
-        this.svg.create('text',{
-          x: 35,
-          y: h/2 + 5,
-          fill: "red"
-        }).appendChild(doc.createTextNode(9));
-
-        this.svg.create('text',{
-          x: w - 35,
-          y: h/2 + 5,
-          fill: "red"
-        }).appendChild(doc.createTextNode(3));
-
         var c = (new Clock("clock-1"));
-
         this.uber.postCreate.call(this);
 			}
 		});

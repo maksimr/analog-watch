@@ -5458,17 +5458,32 @@ body {
   padding-bottom: 1.5em;
 }
 
-/* line 15, ../sass/common.scss */
-#clock-2 rect {
-  fill: #D7DAFF;
+/* line 16, ../sass/common.scss */
+#clock-1 > svg {
+  -moz-border-radius: 10%;
+  -webkit-border-radius: 10%;
+  -o-border-radius: 10%;
+  -ms-border-radius: 10%;
+  -khtml-border-radius: 10%;
+  border-radius: 10%;
+  margin-right: 20px;
+  background-color: #000;
+  stroke-width: 0;
 }
 
-/* line 19, ../sass/common.scss */
+/* line 23, ../sass/common.scss */
+#clock-2 rect {
+  fill: white;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+/* line 29, ../sass/common.scss */
 .hr-top {
   margin-top: 1.5em;
 }
 
-/* line 22, ../sass/common.scss */
+/* line 32, ../sass/common.scss */
 .hr-bottom {
   margin-bottom: 1.5em;
 }

@@ -12,8 +12,18 @@ body {
   @include padding-trailer;
 }
 
+
+#clock-1 > svg {
+  @include border-radius(10%);
+  margin-right: 20px;
+  background-color: #000;
+  stroke-width: 0;
+}
+
 #clock-2 rect {
-  fill: #D7DAFF;
+  fill: white;
+  stroke: #000;
+  stroke-width: 2;
 }
 
 .hr-top {

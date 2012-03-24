@@ -8,6 +8,7 @@
 		"use strict";
 
 		var Clock, M = Math,
+    doc = global.document,
 		TX = [],
 		TY = [],
 		R = M.PI / 180,
@@ -17,8 +18,8 @@
      * get angel of rotation
      */
 		for (count = 13; --count; count) {
-			TX[count] = [M.cos(30 * count * R)];
-			TY[count] = [M.sin(30 * count * R)];
+			TX[count] = [ M.sin(30 * count * R)];
+			TY[count] = [-M.cos(30 * count * R)];
 		}
 		/*
      * @param {Element|String} domNode root node of clock
@@ -95,13 +96,15 @@
 			if (lang.isUndefined(this.markers)) {
 				this.markers = [];
 				for (i = 13; --i; i) {
-					x = [width / 2 + M.round((width/2 - 20) * TX[i]), width / 2 + M.round((width/2 - 10) * TX[i])];
-					y = [height / 2 + M.round((height/2 - 20) * TY[i]), height / 2 + M.round((height/2 - 10) * TY[i])];
+					x = width / 2 + M.round(width * 0.35 * TX[i]);
+					y = height / 2 + M.round(height * 0.35* TY[i]);
 
-					this.markers.push(lang.attr(svg.path("M" + x[0] + " " + y[0] + "L" + x[1] + " " + y[1]), {
-						stroke: "#000000",
-						fill: "none"
-					}));
+          this.markers.push(svg.create('text',{
+            x: x - width * 0.025 * (i < 10 ? 1 : 2),
+            y: y + height * 0.025 * (i < 10 ? 1 : 2),
+            'font-size': width*0.1,
+						fill: "#000"
+          }).appendChild(doc.createTextNode(i)));
 				}
 			}
 
