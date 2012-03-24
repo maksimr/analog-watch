@@ -1,5 +1,5 @@
 /*
- * @module Clock
+ * @module Watch
  */
 
 (function (global) {
@@ -7,7 +7,7 @@
 	define(['./lang', './Svg'], function (lang, Svg) {
 		"use strict";
 
-		var Clock, M = Math,
+		var Watch, M = Math,
     doc = global.document,
 		TX = [],
 		TY = [],
@@ -22,27 +22,27 @@
 			TY[count] = [-M.cos(30 * count * R)];
 		}
 		/*
-     * @param {Element|String} domNode root node of clock
+     * @param {Element|String} domNode root node of watch
      * @param {Object} parameter configuration object
      */
-		Clock = function (domNode, parametrs) {
-			if (! (this instanceof Clock)) {
-				return new Clock(domNode);
+		Watch = function (domNode, parametrs) {
+			if (! (this instanceof Watch)) {
+				return new Watch(domNode);
 			}
-      this.uber = Clock.prototype;
+      this.uber = Watch.prototype;
 			this.create(domNode, parametrs);
 		};
 
 		/**
      * create
-     * call on create Clock object
+     * call on create Watch object
      *
      * life cicle postMixinProperties, buildRendering, postCreate
      */
-		Clock.prototype.create = function (domNode, parametrs) {
+		Watch.prototype.create = function (domNode, parametrs) {
 			this.srcNode = lang.byId(domNode) || lang.createNode('div');
 
-			//clock's size
+			//watch's size
 			this.width = 200;
 			this.height = 200;
 
@@ -58,13 +58,13 @@
 		/**
      * postMixinProperties
      */
-		Clock.prototype.postMixinProperties = function () {};
+		Watch.prototype.postMixinProperties = function () {};
 
 		/**
      * buildRendering
-     * Render clock
+     * Render watch
      */
-		Clock.prototype.buildRendering = function () {
+		Watch.prototype.buildRendering = function () {
 			var rootNode = this.srcNode,
 			width = this.width,
 			height = this.height,
@@ -76,10 +76,10 @@
 			i;
 
 			/*
-       * Draw clock frame
+       * Draw watch frame
        */
-			if (lang.isUndefined(this.clockNode)) {
-				this.clockNode = lang.attr(Svg.create('circle'), {
+			if (lang.isUndefined(this.watchNode)) {
+				this.watchNode = lang.attr(Svg.create('circle'), {
           cx: width/2,
           cy: height/2,
           r: width/2 - 5,
@@ -88,7 +88,7 @@
 					"stroke-width": 5
 				});
 			}
-      lang.createNode(this.clockNode, this.svg.containerNode);
+      lang.createNode(this.watchNode, this.svg.containerNode);
 
 			/*
        * Draw time markers
@@ -159,14 +159,14 @@
 		/**
      * post create object
      */
-		Clock.prototype.postCreate = function () {
+		Watch.prototype.postCreate = function () {
 			this.run();
 		};
 
 		/**
      * tick
      */
-		Clock.prototype.tick = function () {
+		Watch.prototype.tick = function () {
 			var timeNow = this.getTimeZone(),
 			width = this.width,
 			height = this.height,
@@ -184,14 +184,14 @@
      * get date time for specific zone
      * @return {Date}
      */
-    Clock.prototype.getTimeZone = function () {
+    Watch.prototype.getTimeZone = function () {
       return new Date();
     };
 
 		/**
-     * run clock
+     * run watch
      */
-		Clock.prototype.run = function (dateTime) {
+		Watch.prototype.run = function (dateTime) {
 			this.tick();
 			this._interval = global.setInterval(lang.hitch(this, 'tick'), 1000);
 		};
@@ -200,11 +200,11 @@
      * stop stop
      *
      */
-		Clock.prototype.stop = function () {
+		Watch.prototype.stop = function () {
 			global.clearInterval(this._interval);
 		};
 
-		return Clock;
+		return Watch;
 	});
 
 } (this));

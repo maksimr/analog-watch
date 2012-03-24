@@ -1,23 +1,23 @@
 (function (global) {
 	"use strict";
 
-	require(['./lang', './Clock', './Svg'], function (lang, Clock, Svg) {
+	require(['./lang', './Watch', './Svg'], function (lang, Watch, Svg) {
     var doc = document;
 
-		var clock1 = new Clock("clock-1", {
+		var watch1 = new Watch("watch-1", {
 			width: 400,
 			height: 400,
 			postCreate: function () {
-        var c = (new Clock("clock-1"));
+        var c = (new Watch("watch-1"));
         this.uber.postCreate.call(this);
 			}
 		});
 
 		//Only hour
-		var clock2 = new Clock("clock-2", {
+		var watch2 = new Watch("watch-2", {
 			width: 100,
 			height: 100,
-			clockNode: Svg.create('rect', {
+			watchNode: Svg.create('rect', {
 				width: 100,
 				height: 100,
 				rx: 10,
@@ -28,7 +28,7 @@
 		});
 
 		//Only minutes
-		var clock3 = new Clock("clock-3", {
+		var watch3 = new Watch("watch-3", {
 			width: 100,
 			height: 100,
 			hourHandNode: false,
@@ -36,7 +36,7 @@
 		});
 
 		//Only seconds
-		var clock4 = new Clock("clock-4", {
+		var watch4 = new Watch("watch-4", {
 			width: 100,
 			height: 100,
 			hourHandNode: false,

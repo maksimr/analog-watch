@@ -5459,7 +5459,7 @@ body {
 }
 
 /* line 16, ../sass/common.scss */
-#clock-1 > svg {
+#watch-1 > svg {
   -moz-border-radius: 10%;
   -webkit-border-radius: 10%;
   -o-border-radius: 10%;
@@ -5472,7 +5472,7 @@ body {
 }
 
 /* line 23, ../sass/common.scss */
-#clock-2 rect {
+#watch-2 rect {
   fill: white;
   stroke: #000;
   stroke-width: 2;
