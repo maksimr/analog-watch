@@ -1,0 +1,56 @@
+// @module animation/animation
+// @dependecy "compass/css3/shared"
+
+@import "compass/css3/shared"
+@import "private"
+
+// animation propery
+@mixin animation ($name, $duration, $timing-function: linear, $delay: 0s, $iteration-count: infinite, $direction: alternate)
+  $_value: unquote($name) $duration $timing-function $delay $iteration-count $direction
+
+  @include experimental(animation, $_value, -moz, -webkit, -o, -ms, -khtml, true)
+
+
+// animation timing function
+@mixin animation-timing-function ($timing-function: linear)
+  @include experimental(animation-timing-function, unquote($timing-function), -moz, -webkit, -o, -ms, -khtml, true)
+
+
+
+// keyframes rule
+@mixin keyframes ($name, $list, $moz: true, $webkit: true, $o: false, $ms: false, $khtml: false, $official: true)
+
+  $interval: 1 / (length($list) - 1)
+  $keyframes: getKeyframes($name, $moz, $webkit, $o, $ms, $khtml, $official)
+
+  @each $frame in $keyframes
+    @#{unquote($frame)}
+      @include _keyframesValue($list, $interval)
+
+
+
+
+// return allowed keyframes rules
+@function getKeyframes ($name, $moz: true, $webkit: true, $o: false, $ms: false, $khtml: false, $official: true)
+  $name: unquote($name)
+  $keyframes: ()
+
+  @if $webkit and $experimental-support-for-webkit
+    $keyframes: append($keyframes, '-webkit-keyframes #{$name}')
+
+  @if $moz and $experimental-support-for-mozilla
+    $keyframes: append($keyframes, '-moz-keyframes #{$name}')
+
+  @if $khtml and $experimental-support-for-khtml
+    $keyframes: append($keyframes, '-khtml-keyframes #{$name}')
+
+  @if $ms and $experimental-support-for-microsoft
+    $keyframes: append($keyframes, '-ms-keyframes #{$name}')
+
+  @if $o and $experimental-support-for-opera
+    $keyframes: append($keyframes, '-o-keyframes #{$name}')
+
+  @if $official
+    $keyframes: append($keyframes, 'keyframes #{$name}')
+
+  @return $keyframes

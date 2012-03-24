@@ -1,0 +1,15 @@
+//@module rollOut
+
+@import "compass/css3/opacity"
+@import "compass/css3/transform"
+
+$frameset: getKeyframes("rollOut", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +opacity(1)
+      +transform(translateX(0px) rotate(0deg))
+    100%
+      +opacity(0)
+      +transform(translateX(100%) rotate(120deg))

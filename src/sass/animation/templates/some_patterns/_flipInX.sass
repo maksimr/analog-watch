@@ -1,0 +1,19 @@
+//@module flipInX
+
+@import "compass/css3/opacity"
+@import "compass/css3/transform"
+
+$frameset: getKeyframes("flipInX", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +transform(perspective(400px) rotateX(90deg))
+      +opacity(0)
+    40%
+      +transform(perspective(400px) rotateX(-10deg))
+    70%
+      +transform(perspective(400px) rotateX(10deg))
+    100%
+      +transform(perspective(400px) rotateX(0deg))
+      +opacity(1)

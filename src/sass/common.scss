@@ -1,0 +1,26 @@
+@import "compass/reset";
+@import "bootstrap";
+
+@import "compass/css3";
+@import "compass/typography/vertical_rhythm";
+
+@include establish-baseline;
+
+body {
+  @include debug-vertical-alignment;
+  @include padding-leader;
+  @include padding-trailer;
+}
+
+#clock-2 rect {
+  fill: #D7DAFF;
+}
+
+.hr-top {
+  @include margin-leader;
+}
+.hr-bottom {
+  @include margin-trailer;
+}
+
+@import "bootstrap-responsive";

@@ -1,0 +1,12 @@
+//@module fadeIn
+
+@import "compass/css3/opacity"
+
+$frameset: getKeyframes("fadeIn", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +opacity(0)
+    100%
+      +opacity(1)

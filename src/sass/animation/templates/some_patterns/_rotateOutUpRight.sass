@@ -1,0 +1,18 @@
+//@module rotateOutUpRight
+
+@import "compass/css3/opacity"
+@import "compass/css3/transform"
+
+$frameset: getKeyframes("rotateOutUpRight", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +apply-origin(right bottom, false)
+      +rotate(0)
+      +opacity(1)
+
+    100%
+      +apply-origin(right bottom, false)
+      +rotate(90deg)
+      +opacity(0)

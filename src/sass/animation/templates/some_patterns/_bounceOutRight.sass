@@ -1,0 +1,19 @@
+//@module bounceOutRight
+
+@import "compass/css3/transform"
+@import "compass/css3/opacity"
+
+$frameset: getKeyframes("bounceOutRight", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +translateX(0)
+
+    20%
+      +opacity(1)
+      +translateX(-20px)
+
+    100%
+      +opacity(0)
+      +translateX(2000px)

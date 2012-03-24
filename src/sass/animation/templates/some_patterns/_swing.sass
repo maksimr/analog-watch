@@ -1,0 +1,20 @@
+//@module swing
+
+@import "compass/css3/transform"
+
+$frameset: getKeyframes("swing", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    20%, 40%, 60%, 80%, 100%
+      +apply-origin(top center, false)
+    20%
+      +rotate(15deg)
+    40%
+      +rotate(-10deg)
+    60%
+      +rotate(5deg)
+    80%
+      +rotate(-5deg)
+    100%
+      +rotate(0deg)

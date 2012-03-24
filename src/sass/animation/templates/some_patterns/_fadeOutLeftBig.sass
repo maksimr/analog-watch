@@ -1,0 +1,15 @@
+//@module fadeOutLeftBig
+
+@import "compass/css3/transform"
+@import "compass/css3/opacity"
+
+$frameset: getKeyframes("fadeOutLeftBig", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%
+      +opacity(1)
+      +translateX(0)
+    100%
+      +opacity(0)
+      +translateX(-2000px)

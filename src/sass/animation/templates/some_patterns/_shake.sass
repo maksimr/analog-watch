@@ -1,0 +1,17 @@
+//@module shake
+
+@import "compass/css3/transform"
+
+$frameset: getKeyframes("shake", -moz, -webkit, -ms, -o)
+
+@each $frame in $frameset
+  @#{unquote($frame)}
+    0%, 100%
+      +translateX(0)
+
+    10%, 30%, 50%, 70%, 90%
+      +translateX(-10px)
+
+    20%, 40%, 60%, 80%
+      +translateX(10px)
+
