@@ -69,7 +69,6 @@
 			width = this.width,
 			height = this.height,
 			svg = this.svg = new Svg(rootNode, width, height),
-      //third parametr is height of hand
       path = ["M{0} {1}L{2} {3}L{4} {3}Z", [width / 2, height*0.3, width/2 - width*0.05, height/2, width/2+width*0.05]],
 			x,
 			y,
@@ -138,7 +137,7 @@
       });
 
 			/*
-       * Draw second hand
+       * Draw seconds hand
        */
 			if (lang.isUndefined(this.secHandNode)) {
         path = ["M{0} {1}L{0} {2}", [width / 2, height / 2, height*0.1]];

@@ -100,7 +100,7 @@
 
 	/**
    * hitch spec
-   * pass only name funciton
+   * pass only function's name
    */
   should(bundle.hitch({
     foo: 'foo',
@@ -111,13 +111,13 @@
 
 	/**
    * replace spec
-   * array with one parametr
+   * array with one parameter
    */
   should(bundle.replace("foo {0}",["bar"])).be("foo bar");
 
 	/**
    * replace spec
-   * array any count parametrs
+   * array any count parameters
    */
   should(bundle.replace("foo {0} {0} {1}",["bar", "foo"])).be("foo bar bar foo");
 
